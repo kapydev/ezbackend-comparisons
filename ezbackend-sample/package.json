@@ -1,0 +1,28 @@
+{
+  "name": "ezbackend-sample",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ezb": "npx ts-node-dev src/index.ts",
+    "start": "npx ts-node-dev src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ezbackend/auth": "0.0.139",
+    "@ezbackend/common": "0.0.139",
+    "@ezbackend/core": "0.0.139",
+    "@ezbackend/cors": "0.0.139",
+    "@ezbackend/utils": "0.0.139"
+  },
+  "devDependencies": {
+    "@ezbackend/db-ui": "0.0.139",
+    "@ezbackend/openapi": "0.0.139",
+    "@types/node": "^16.11.9",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.5.2"
+  }
+}
