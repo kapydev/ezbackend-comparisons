@@ -28,8 +28,8 @@ app.use(session({
     saveUninitialized: false
 }))
 
-app.use('/users', userController)
-app.use('/posts', postController)
+app.use('/user', userController)
+app.use('/post', postController)
 
 export default app
 

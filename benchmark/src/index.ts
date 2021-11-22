@@ -1,5 +1,10 @@
-import autocannon from 'autocannon'
+import { runBenchmarks } from './run-benchmark'
 
-autocannon({
-    url: 'http://localhost:8000/user'
-}, console.log)
+let flag = false
+
+async function main() {
+    await runBenchmarks('ezbackend-sample')
+    await runBenchmarks('express-mongo-sample')
+}
+
+main()

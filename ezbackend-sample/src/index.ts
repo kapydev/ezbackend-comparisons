@@ -33,11 +33,24 @@ const user = new EzUser("User", ["google"], {
   }
 })
 
+// posts.router.for("createOne").onResponse(async (req, res) => {
+//   console.log(req.body)
+// })
+
 app.addApp(posts, { prefix: 'posts' })
-app.addApp(user, { prefix: 'user' })
+app.addApp(user, { prefix: 'users' })
 
 app.start({
   server: {
     logger:false
+  },
+  orm: {
+    type: "postgres",
+    host: process.env.POSTGRES_HOST!,
+    port: process.env.POSTGRES_PORT!,
+    username: process.env.POSTGRES_USER!,
+    password: process.env.POSTGRES_PASSWORD!,
+    database: process.env.POSTGRES_DATABASE!,
+    synchronize: true
   }
 })

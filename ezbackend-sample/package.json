@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "ezb": "npx ts-node-dev src/index.ts",
-    "start": "npx ts-node-dev src/index.ts"
+    "dev": "npx ts-node-dev src/index.ts",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +17,8 @@
     "@ezbackend/common": "0.0.139",
     "@ezbackend/core": "0.0.139",
     "@ezbackend/cors": "0.0.139",
-    "@ezbackend/utils": "0.0.139"
+    "@ezbackend/utils": "0.0.139",
+    "pg": "^8.7.1"
   },
   "devDependencies": {
     "@ezbackend/db-ui": "0.0.139",

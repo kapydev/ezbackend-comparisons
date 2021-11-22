@@ -6,13 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "tsc && node dist/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@types/autocannon": "^4.1.1",
-    "autocannon": "^7.5.0"
+    "autocannon": "^7.5.0",
+    "axios": "^0.24.0",
+    "ora": "~5.4.1"
   }
 }
