@@ -14,7 +14,20 @@ The micro implementation details are optional, the results returned do not need 
 
 Code written should be explicit and easily understandable.
 
+## Method
+
+1. Warmup - 10,000 createOne requests (All request bodies are the same currently)
+2. Seeding Database - Insert one post
+3. Create test - 10,000 createOne requests (All request bodies are the same currently)
+4. Read test - 10,000 readOne requests (All reads are performed on same object currently)
+
+PRs to improve the testing method to be more diverse are welcome
+
 ## Benchmark caveats
+
+### Possible deviations with Project complexity
+
+Depending on how complex your project is, your actual results may defer. If performance or reducing engineering workload is important to you you should run your own benchmarks.
 
 ### Lack of optimisation
 
