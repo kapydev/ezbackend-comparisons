@@ -1,10 +1,13 @@
-import mongoose from "mongoose";
+import { DataTypes } from "sequelize"
+import { sequelize } from "../db"
 
-const userSchema = new mongoose.Schema({
-    googleId: String,
-    googleData: Object
+export const userModel = sequelize.define('User', {
+    googleId: {
+        type: DataTypes.STRING
+    },
+    googleData: {
+        type: DataTypes.JSON
+    }
 })
 
-export const userModel = mongoose.model("User", userSchema)
-
-
+userModel.sync()

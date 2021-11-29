@@ -36,21 +36,20 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var run_benchmark_1 = require("./run-benchmark");
-var flag = false;
+var update_readme_1 = require("./update-readme");
 function main() {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, run_benchmark_1.runBenchmarks('ezbackend-sample')];
-                case 1:
-                    _a.sent();
-                    return [4 /*yield*/, run_benchmark_1.runBenchmarks('express-mongo-sample')];
-                case 2:
-                    _a.sent();
-                    return [2 /*return*/];
-            }
+            // for (const frameworkName of sampleList) {
+            //     await runBenchmarks(frameworkName)
+            //     countLines(frameworkName)
+            // }
+            // await runBenchmarks('ezbackend-postgres-sample')
+            // await countLines('ezbackend-postgres-sample')
+            (0, update_readme_1.updateReadme)();
+            return [2 /*return*/];
         });
     });
 }
 main();
+//# sourceMappingURL=index.js.map

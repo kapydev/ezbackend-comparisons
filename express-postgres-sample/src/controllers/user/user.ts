@@ -16,25 +16,29 @@ userController.post('/', async (req, res) => {
 
 //READ ALL
 userController.get('/', async (req, res) => {
-    const result = await userModel.find().exec()
+    const result = await userModel.findAll()
     res.json(result)
 })
 
 //READ ONE
 userController.get('/:id', async (req, res) => {
-    const result = await userModel.findById(req.params.id).exec()
+    const result = await userModel.findByPk(req.params.id)
     res.json(result)
 })
 
 //UPDATE ONE
 userController.patch('/:id', async (req, res) => {
-    const result = await userModel.findByIdAndUpdate(req.params.id).exec()
+    const result = await userModel.update(
+        req.body,
+        { where: { _id: req.params.id } }
+    )
     res.json(result)
 })
 
 //DELETE ONE
 userController.delete('/:id', async (req, res) => {
-    const result = await userModel.findByIdAndDelete(req.params.id).exec()
+    const oldUser =  await userModel.findByPk(req.params.id)
+    const result = await oldUser?.destroy()
     res.json(result)
 })
 

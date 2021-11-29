@@ -1,10 +1,13 @@
-import mongoose from "mongoose";
+import { DataTypes } from "sequelize"
+import { sequelize } from "../db"
 
-const postSchema = new mongoose.Schema({
-    summary: String,
-    description: String
+export const postModel = sequelize.define('Post', {
+    summary: {
+        type: DataTypes.STRING
+    },
+    description: {
+        type: DataTypes.STRING
+    }
 })
 
-export const postModel = mongoose.model("Post", postSchema)
-
-
+postModel.sync()

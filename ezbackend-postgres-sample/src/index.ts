@@ -16,26 +16,10 @@ app.addApp(new EzAuth())
 
 const posts = new EzModel('Post', {
   summary: Type.VARCHAR,
-  description: Type.VARCHAR,
-  creator: {
-    type: Type.MANY_TO_ONE,
-    target: "User",
-    inverseSide: "posts"
-  }
+  description: Type.VARCHAR
 })
 
-const user = new EzUser("User", ["google"], {
-  posts: {
-    type: Type.ONE_TO_MANY,
-    target: "Post",
-    inverseSide: "creator",
-    nullable: true
-  }
-})
-
-// posts.router.for("createOne").onResponse(async (req, res) => {
-//   console.log(req.body)
-// })
+const user = new EzUser("User", ["google"])
 
 app.addApp(posts, { prefix: 'posts' })
 app.addApp(user, { prefix: 'users' })

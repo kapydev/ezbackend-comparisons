@@ -1,0 +1,1 @@
+{"header":{"cloc_url":"github.com/AlDanial/cloc","cloc_version":"1.90","elapsed_seconds":0.0572550296783447,"n_files":11,"n_lines":235,"files_per_second":192.122859105957,"lines_per_second":4104.44289908181},"TypeScript":{"nFiles":11,"blank":43,"comment":13,"code":179},"SUM":{"blank":43,"comment":13,"code":179,"nFiles":11},"server":"lineCount-express-postgres-sample"}

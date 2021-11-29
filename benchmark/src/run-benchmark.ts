@@ -2,30 +2,8 @@ import { fork } from "child_process"
 import ora from 'ora'
 import path from 'path'
 import autocannon from "autocannon"
-import fs from 'fs'
-import { promisify } from 'util'
 import axios from 'axios'
-
-
-const writeFile = promisify(fs.writeFile)
-const mkdir = promisify(fs.mkdir)
-const access = promisify(fs.access)
-
-const resultsDirectory = path.join(__dirname, '../../results')
-
-const writeResult = async (handler: string, result: any) => {
-    try {
-        await access(resultsDirectory)
-    } catch (e) {
-        await mkdir(resultsDirectory)
-    }
-
-    result.server = handler
-
-    const dest = path.join(resultsDirectory, `${handler}.json`)
-    return writeFile(dest, JSON.stringify(result))
-}
-
+import { writeResult } from "./utils"
 
 const getReadOpts = (id: any): autocannon.Options => {
     return {
@@ -117,6 +95,7 @@ export const runBenchmarks = async (frameworkName: string) => {
 
 
     forked.kill("SIGINT")
+    spinner.text = `${frameworkName} - Read/Write Tests complete`
     spinner.succeed()
 
 

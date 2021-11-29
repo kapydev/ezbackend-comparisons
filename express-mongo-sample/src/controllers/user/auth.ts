@@ -3,14 +3,24 @@ import { Strategy as GoogleStrategy, VerifyFunctionWithRequest } from 'passport-
 import { userModel } from '../../models'
 import passport from "passport"
 
+declare global {
+    namespace Express {
+        interface User {
+            id: string
+            googleId: string,
+            googleData: any
+        }
+    }
+}
+
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID!,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-    callbackURL: process.env.GOOGLE_CALLBACK!,
+    callbackURL: "/users/auth/google/callback",
 },
     async function verify(accessToken, refreshToken, profile, done) {
         try {
-            let user = await userModel.find({ googleId: profile.id }).exec()
+            let user = await userModel.findOne({ googleId: profile.id }).exec()
             if (!user) {
                 user = await userModel.create({ googleId: profile.id, googleData: profile })
             }
@@ -21,17 +31,32 @@ passport.use(new GoogleStrategy({
     }
 ))
 
+passport.serializeUser((user, done) => {
+    done(null, user.id)
+})
+
+passport.deserializeUser((id, done) => {
+
+    userModel
+        .findById(id as string)
+        .then((user) => {
+            done(null,user)
+        })
+
+})
 
 export const authController = Router()
 
-authController.get('/google/login', (req, res) => {
-
-})
+authController.get('/google/login', passport.authenticate('google', {
+    scope: ['email', 'profile']
+}))
 
 authController.get('/google/logout', (req, res) => {
-
+    req.logout()
+    res.redirect('/')
 })
 
-authController.get('/google/callback', (req, res) => {
-
-})
+authController.get('/google/callback', passport.authenticate('google', {
+    successRedirect: '/',
+    failureRedirect: '/'
+}))
