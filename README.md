@@ -1,4 +1,4 @@
-# ezbackend-comparisons
+# Ezbackend Comparisons
 
 Comparisons and Benchmarks of EzBackend against other popular solutions
 
